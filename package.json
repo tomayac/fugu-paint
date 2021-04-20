@@ -1,0 +1,71 @@
+{
+  "name": "fugu-greetings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server",
+    "lint:js": "npx eslint ./public/js/*.mjs --fix && npx eslint ./public/*.js --fix",
+    "lint:css": "npx stylelint ./public/css/*.css --fix",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomayac/fugu-greetings.git"
+  },
+  "author": "Thomas Steiner (https://blog.tomayac.com/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tomayac/fugu-greetings/issues"
+  },
+  "homepage": "https://github.com/tomayac/fugu-greetings#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-google": "^0.14.0",
+    "http-server": "^0.12.3",
+    "pre-commit": "^1.2.2",
+    "shx": "^0.3.3",
+    "snowpack": "^3.1.2",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0",
+    "terser": "^5.6.1"
+  },
+  "dependencies": {
+    "@pwabuilder/pwainstall": "^1.6.7",
+    "pointer-tracker": "^2.4.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "extends": [
+      "google"
+    ],
+    "ignorePatterns": [
+      "public/web_modules/"
+    ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "selector-type-no-unknown": [
+        true,
+        {
+          "ignore": [
+            "custom-elements"
+          ]
+        }
+      ],
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": []
+        }
+      ]
+    }
+  }
+}
